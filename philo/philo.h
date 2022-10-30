@@ -6,7 +6,7 @@
 /*   By: tboumadj@student.42mulhouse.fr <tboumadj>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:41:35 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/29 21:54:06 by tboumadj@student ###   ########.fr       */
+/*   Updated: 2022/10/30 22:19:25 by tboumadj@student ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 
 typedef struct s_data
 {
+	//int	cnt_arg;
 	int ac;
 	char **av;
 }	t_data;
@@ -44,5 +45,11 @@ int		ft_atoi(const char *str);
 
 //-------------CHECK--------------//
 int		init_value(t_philo *philo);
+int		check_value(char **argv);
+int		verif_init(t_philo *philo);
+
+//int	check_onearg(t_philo *philo, char *argv);
+//int	check_nb(char *str);
+//int	count_arg(char *str);
 
 #endif

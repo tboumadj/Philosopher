@@ -6,7 +6,7 @@
 #    By: tboumadj@student.42mulhouse.fr <tboumadj>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/29 20:55:08 by tboumadj@student  #+#    #+#              #
-#    Updated: 2022/10/29 21:33:04 by tboumadj@student ###   ########.fr        #
+#    Updated: 2022/10/30 12:51:45 by tboumadj@student ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ HEADER	=	philo.h
 
 SRCS	=	main.c \
 		error.c \
-		utils.c
+		utils.c \
+		check.c
 
 OBJS	=	$(SRCS:.c=.o)
 
