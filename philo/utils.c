@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tboumadj@student.42mulhouse.fr <tboumadj>  +#+  +:+       +#+        */
+/*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 21:32:42 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/30 22:05:27 by tboumadj@student ###   ########.fr       */
+/*   Updated: 2022/10/31 12:50:44 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int ft_atoi(const char *str)
     int nb = 0;
     int neg = 1;
 
-    while (str[i] <= 32)
+    while (str[i] <= 32 || str[i] == 43)
     i++;
     if (str[i] == 45)
     {

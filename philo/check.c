@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tboumadj@student.42mulhouse.fr <tboumadj>  +#+  +:+       +#+        */
+/*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 12:50:53 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/30 22:20:00 by tboumadj@student ###   ########.fr       */
+/*   Updated: 2022/10/31 12:50:45 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	check_value(char **argv)
 	{
 		while (argv[i][j])
 		{
-			if (argv[i][j] < 48 || argv[i][j] > 57)
+			if (argv[i][j] != 43 && (argv[i][j] < 48 || argv[i][j] > 57))
 			{
 				ft_error_nrm("ARG INVALID");
 				return (0);

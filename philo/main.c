@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tboumadj@student.42mulhouse.fr <tboumadj>  +#+  +:+       +#+        */
+/*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 20:38:23 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/30 22:14:32 by tboumadj@student ###   ########.fr       */
+/*   Updated: 2022/10/31 12:46:55 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

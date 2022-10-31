@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tboumadj@student.42mulhouse.fr <tboumadj>  +#+  +:+       +#+        */
+/*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:41:35 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/30 22:19:25 by tboumadj@student ###   ########.fr       */
+/*   Updated: 2022/10/31 12:53:58 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int		init_value(t_philo *philo);
 int		check_value(char **argv);
 int		verif_init(t_philo *philo);
 
+//--------OPT ARG--------------//
 //int	check_onearg(t_philo *philo, char *argv);
 //int	check_nb(char *str);
 //int	count_arg(char *str);
