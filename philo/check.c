@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tboumadj@student.42mulhouse.fr <tboumadj>  +#+  +:+       +#+        */
+/*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 12:50:53 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/31 18:01:43 by tboumadj@student ###   ########.fr       */
+/*   Updated: 2022/11/02 15:13:46 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,34 +51,6 @@ int	check_value(char **argv)
 		j = 0;
 		i++;
 	}
-	return (1);
-}
-
-int	init_value(t_data *data)
-{
-	
-	data->nb_p = ft_atoi(data->av[1]);
-	data->time_td = ft_atoi(data->av[2]);
-	data->time_te = ft_atoi(data->av[3]);
-	data->time_ts = ft_atoi(data->av[4]);
-	if (data->ac > 5)
-		data->count_opt = ft_atoi(data->av[5]);
-	else 
-		data->count_opt = 0;
-	if (verif_init(data) == 0)
-		return (0);
-	//-----------PRINT VAL-----------//
-	if(data->nb_p)
-		printf("nb_p = %d\n", data->nb_p);
-	if(data->time_td)
-		printf("time_td = %d\n", data->time_td);
-	if(data->time_te)
-		printf("time_te = %d\n", data->time_te);
-	if(data->time_ts)
-		printf("time_ts = %d\n", data->time_ts);
-	if(data->count_opt)
-		printf("count_opt = %d\n", data->count_opt);
-	//--------------------------------//
 	return (1);
 }
 

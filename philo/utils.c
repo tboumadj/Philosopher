@@ -6,11 +6,21 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 21:32:42 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/31 12:50:44 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/11/02 15:41:22 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+unsigned long long get_time(void)
+{
+    struct timeval tv;
+    unsigned long long ms;
+
+    gettimeofday(&tv, NULL);
+    ms = tv.tv_sec * 1000 + tv.tv_usec / 1000;
+    return (ms);
+}
 
 int ft_atoi(const char *str)
 {
