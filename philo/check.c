@@ -3,28 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: tboumadj@student.42mulhouse.fr <tboumadj>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 12:50:53 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/31 12:50:45 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/10/31 18:01:43 by tboumadj@student ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	verif_init(t_philo *philo)
+int	verif_init(t_data *data)
 {
-	if (philo->nb_p < 1)
+	if (data->nb_p < 1)
 		return (0);
-	if (philo->time_td < 1)
+	if (data->time_td < 1)
 		return (0);
-	if (philo->time_te < 1)
+	if (data->time_te < 1)
 		return (0);
-	if (philo->time_ts < 1)
+	if (data->time_ts < 1)
 		return (0);
-	if (philo->data.ac > 5)
+	if (data->ac > 5)
 		{
-			if (philo->count_opt < 1)
+			if (data->count_opt < 1)
 				return (0);
 		}
 	return (1);
@@ -54,30 +54,30 @@ int	check_value(char **argv)
 	return (1);
 }
 
-int	init_value(t_philo *philo)
+int	init_value(t_data *data)
 {
 	
-	philo->nb_p = ft_atoi(philo->data.av[1]);
-	philo->time_td = ft_atoi(philo->data.av[2]);
-	philo->time_te = ft_atoi(philo->data.av[3]);
-	philo->time_ts = ft_atoi(philo->data.av[4]);
-	if (philo->data.ac > 5)
-		philo->count_opt = ft_atoi(philo->data.av[5]);
+	data->nb_p = ft_atoi(data->av[1]);
+	data->time_td = ft_atoi(data->av[2]);
+	data->time_te = ft_atoi(data->av[3]);
+	data->time_ts = ft_atoi(data->av[4]);
+	if (data->ac > 5)
+		data->count_opt = ft_atoi(data->av[5]);
 	else 
-		philo->count_opt = 0;
-	if (verif_init(philo) == 0)
+		data->count_opt = 0;
+	if (verif_init(data) == 0)
 		return (0);
 	//-----------PRINT VAL-----------//
-	if(philo->nb_p)
-		printf("nb_p = %d\n", philo->nb_p);
-	if(philo->time_td)
-		printf("time_td = %d\n", philo->time_td);
-	if(philo->time_te)
-		printf("time_te = %d\n", philo->time_te);
-	if(philo->time_ts)
-		printf("time_ts = %d\n", philo->time_ts);
-	if(philo->count_opt)
-		printf("count_opt = %d\n", philo->count_opt);
+	if(data->nb_p)
+		printf("nb_p = %d\n", data->nb_p);
+	if(data->time_td)
+		printf("time_td = %d\n", data->time_td);
+	if(data->time_te)
+		printf("time_te = %d\n", data->time_te);
+	if(data->time_ts)
+		printf("time_ts = %d\n", data->time_ts);
+	if(data->count_opt)
+		printf("count_opt = %d\n", data->count_opt);
 	//--------------------------------//
 	return (1);
 }

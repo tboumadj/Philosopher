@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: tboumadj@student.42mulhouse.fr <tboumadj>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 20:38:23 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/31 12:46:55 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/10/31 17:45:13 by tboumadj@student ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(int argc, char **argv)
 {
-	t_philo	philo;
+	t_data	data;
 
 	/*if (argc == 2)
 	{
@@ -25,11 +25,11 @@ int	main(int argc, char **argv)
 		ft_error_nrm("TOO FEW OR MORE ARG");
 	else
 	{
-		philo.data.ac = argc;
-		philo.data.av = argv;
+		data.ac = argc;
+		data.av = argv;
 		if (check_value(argv) == 1)
 		{
-			if(init_value(&philo) == 0)
+			if(init_value(&data) == 0)
 				ft_error_nrm("WRONG ARG!");
 		}
 	}
