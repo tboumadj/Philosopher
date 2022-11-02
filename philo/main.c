@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: tboumadj@student.42mulhouse.fr <tboumadj>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 20:38:23 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/11/02 16:29:53 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/11/03 00:19:17 by tboumadj@student ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,8 @@ int	main(int argc, char **argv)
 		{
 			if(init_value(&data) == 0)
 				ft_error_nrm("WRONG ARG!");
-			if(init_philo(&data) == 1)
-			{
-				printf("ok init philo\n");
-			}
+			if(init_mutex(&data) == 1)
+				init_philo(&data) == 1;
 		}
 	}
 	//-----TMP-----------//

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+         #
+#    By: tboumadj@student.42mulhouse.fr <tboumadj>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/29 20:55:08 by tboumadj@student  #+#    #+#              #
-#    Updated: 2022/11/02 15:13:56 by tboumadj         ###   ########.fr        #
+#    Updated: 2022/11/02 23:55:55 by tboumadj@student ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ SRCS	=	main.c \
 		error.c \
 		utils.c \
 		check.c \
-		init.c
+		init.c \
+		thread.c
 
 OBJS	=	$(SRCS:.c=.o)
 

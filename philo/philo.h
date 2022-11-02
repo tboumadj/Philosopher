@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: tboumadj@student.42mulhouse.fr <tboumadj>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:41:35 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/11/02 17:23:22 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/11/03 00:22:29 by tboumadj@student ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,17 @@
 # include <sys/time.h>
 # include <pthread.h>
 
+struct s_data;
+
 typedef struct s_philo
 {
-	//-----info philo
 	int					n;
 	unsigned long long 	done_e;
 	int					r_fork;
 	int					l_fork;
 	int					count_e;
+	struct s_data		*dat;
+	pthread_t			thread;
 }	t_philo;
 
 typedef struct s_data
@@ -40,8 +43,10 @@ typedef struct s_data
 	int					time_te;
 	int					time_ts;
 	int					count_opt;
-	unsigned long long 	time_start;// a verif
+	unsigned long long 	time_start;
 	t_philo				*philo;
+	pthread_mutex_t		*forks;
+	pthread_mutex_t 	print;
 }	t_data;
 
 //-------------ERROR--------------//
@@ -58,6 +63,10 @@ int		verif_init(t_data *data);
 //-------------INIT----------------//
 int		init_value(t_data *data);
 int		init_philo(t_data *data);
+int		init_mutex(t_data *data);
+
+//------------THREAD----------------//
+void	road_th(void *philo);
 
 //--------OPT ARG--------------//
 //int	check_onearg(t_philo *philo, char *argv);
