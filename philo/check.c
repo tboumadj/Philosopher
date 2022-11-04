@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tboumadj@student.42mulhouse.fr <tboumadj>  +#+  +:+       +#+        */
+/*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 12:50:53 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/11/04 14:46:32 by tboumadj@student ###   ########.fr       */
+/*   Updated: 2022/11/04 17:03:02 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,21 +57,30 @@ int	check_value(char **argv)
 void	check_df(t_data *data)
 {
 	int i;
+	int j;
 
 	i = -1;
 	while (++i < data->nb_p && data->p_dead == 0)
 	{
-		pthread_mutex_lock(&(data->eating));
+		pthread_mutex_lock(&data->eating);
 		if(get_time() - data->philo[i].done_e > data->time_td)
 		{
 			data->p_dead = 1;
 			print_road(data->philo, "is dead");
 		}
-		pthread_mutex_unlock(&(data->eating));
-		i = 0;
-		while (data->philo[i].count_e >= data->count_opt)
+		pthread_mutex_unlock(&data->eating);
+	}
+	i = 0;
+	j = 0;
+	if (data->count_opt > 0)
+	{
+		while (i < data->nb_p)
+		{
+			if (data->philo[i].count_e >= data->count_opt)
+				j++;
 			i++;
-		if (i == data->nb_p)
+		}
+		if (j == data->nb_p)
 			data->full_opt = 1;
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tboumadj@student.42mulhouse.fr <tboumadj>  +#+  +:+       +#+        */
+/*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 21:32:42 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/11/04 14:44:46 by tboumadj@student ###   ########.fr       */
+/*   Updated: 2022/11/04 17:12:36 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	ft_free_all(t_data *data)
 
 	i = -1;
 	while (i < data->nb_p)
-		pthread_mutex_destroy(&(data->forks[++i]));
-	pthread_mutex_destroy(&(data->eating));
-	pthread_mutex_destroy(&(data->printing));
+		pthread_mutex_destroy(&data->forks[++i]);
+	pthread_mutex_destroy(&data->eating);
+	pthread_mutex_destroy(&data->printing);
 	free(data->philo);
 	data->philo = NULL;
 	free(data->forks);
@@ -32,15 +32,15 @@ void	sleeping_time(unsigned long long ms)
 
 	now = get_time();
 	while (ms > (get_time() - now))
-		usleep(50);
+		usleep(777);         //----------TEST || 50
 	return ;
 }
 
 void	print_road(t_philo *p, char *str)
 {
-	pthread_mutex_lock(&p->dat->printing);
+	pthread_mutex_lock(&(p->dat->printing));
 	printf("%llu philo : %d %s\n", get_time() - p->dat->time_start, p->n, str);
-	pthread_mutex_unlock(&p->dat->printing);
+	pthread_mutex_unlock(&(p->dat->printing));
 	return ;
 }
 

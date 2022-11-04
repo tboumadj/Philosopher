@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   thread.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tboumadj@student.42mulhouse.fr <tboumadj>  +#+  +:+       +#+        */
+/*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 23:55:32 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/11/04 14:47:24 by tboumadj@student ###   ########.fr       */
+/*   Updated: 2022/11/04 17:11:01 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	eat_th(t_philo *p)
 	sleeping_time(p->dat->time_te);
 	pthread_mutex_unlock(&(p->dat->forks[p->l_fork]));
 	pthread_mutex_unlock(&(p->dat->forks[p->r_fork]));
+	usleep(777);         //----------TEST
 	return ;
 }
 
@@ -43,6 +44,7 @@ void	*road_th(void *philo)
 		print_road(p, "is sleeping");
 		sleeping_time(p->dat->time_ts);
 		print_road(p, "is thinking");
+		usleep(777);         //----------TEST
 	}
 	return (NULL);
 }

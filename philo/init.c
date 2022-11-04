@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tboumadj@student.42mulhouse.fr <tboumadj>  +#+  +:+       +#+        */
+/*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 15:13:19 by tboumadj          #+#    #+#             */
-/*   Updated: 2022/11/04 14:45:37 by tboumadj@student ###   ########.fr       */
+/*   Updated: 2022/11/04 17:06:19 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ int	init_mutex(t_data *data)
 {
 	int i;
 
-	i = 0;
+	i = -1;
 	data->forks = malloc(sizeof(pthread_mutex_t) * data->nb_p);
 	if (!data->forks)
 		return (0);
 	while (i < data->nb_p)
-		pthread_mutex_init(&data->forks[i], NULL);
+		pthread_mutex_init(&data->forks[++i], NULL);
 	pthread_mutex_init(&data->printing, NULL);
 	pthread_mutex_init(&data->eating, NULL);
 	return (1);
@@ -45,9 +45,8 @@ int	init_philo(t_data *data)
             else
                     data->philo[i].l_fork = (i + 2);
 			data->philo[i].dat = data;
-			if (pthread_create(&data->philo[i].thread, NULL, road_th, &data->philo[i]) != 0)
-				return (0);
-            /*//-----------PRINT VAL-----------//
+			pthread_create(&(data->philo[i].thread), NULL, road_th, &data->philo[i]);
+           /*//-----------PRINT VAL-----------//
             printf("-----------------\n");
             if (data->philo[i].n)
                 printf("philo -> %d\n", data->philo[i].n);
@@ -62,9 +61,9 @@ int	init_philo(t_data *data)
             //--------------------------------//*/
             i++;
         }
-		i = 0;
+		i = -1;
 		while(i < data->nb_p)
-			pthread_detach(data->philo[i++].thread);
+			pthread_detach(data->philo[++i].thread);
     return (1);
 }
 
