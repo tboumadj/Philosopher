@@ -6,7 +6,7 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 20:38:23 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/11/04 17:00:32 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/11/04 18:43:26 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int	main(int argc, char **argv)
 			if(init_mutex(&data) == 1)
 			{
 				init_philo(&data);
-				check_finish(&data);
-				ft_free_all(&data);
+				if (check_finish(&data) == 1)
+					ft_free_all(&data);
 			}
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 21:32:42 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/11/04 17:12:36 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/11/04 18:41:17 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	sleeping_time(unsigned long long ms)
 
 	now = get_time();
 	while (ms > (get_time() - now))
-		usleep(777);         //----------TEST || 50
+		usleep(77);         //----------TEST || 50
 	return ;
 }
 

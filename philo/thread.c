@@ -6,7 +6,7 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 23:55:32 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/11/04 17:11:01 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/11/04 18:42:31 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	*road_th(void *philo)
 
 	p = (t_philo *)philo;
 	if (p->n % 2 == 0)
-		usleep(777);
+		usleep(7777);
 	while (p->dat->p_dead == 0)
 	{
 		eat_th(p);
