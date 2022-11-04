@@ -6,7 +6,7 @@
 /*   By: tboumadj@student.42mulhouse.fr <tboumadj>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:41:35 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/11/03 00:22:29 by tboumadj@student ###   ########.fr       */
+/*   Updated: 2022/11/04 14:44:08 by tboumadj@student ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,13 @@ typedef struct s_data
 	int					time_te;
 	int					time_ts;
 	int					count_opt;
+	int					full_opt;
+	int					p_dead;
 	unsigned long long 	time_start;
 	t_philo				*philo;
 	pthread_mutex_t		*forks;
-	pthread_mutex_t 	print;
+	pthread_mutex_t 	printing;
+	pthread_mutex_t		eating;
 }	t_data;
 
 //-------------ERROR--------------//
@@ -55,10 +58,15 @@ void	ft_error_nrm(char *str);
 //-------------UTILS-------------//
 int					ft_atoi(const char *str);
 unsigned long long	get_time(void);
+void				print_road(t_philo *p, char *str);
+void				sleeping_time(unsigned long long ms);
+void				ft_free_all(t_data *data);
 
 //-------------CHECK--------------//
 int		check_value(char **argv);
 int		verif_init(t_data *data);
+void	check_df(t_data *data);
+int		check_finish(t_data *data);
 
 //-------------INIT----------------//
 int		init_value(t_data *data);
@@ -66,7 +74,8 @@ int		init_philo(t_data *data);
 int		init_mutex(t_data *data);
 
 //------------THREAD----------------//
-void	road_th(void *philo);
+void	*road_th(void *philo);
+void	eat_th(t_philo *p);
 
 //--------OPT ARG--------------//
 //int	check_onearg(t_philo *philo, char *argv);

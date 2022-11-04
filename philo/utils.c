@@ -3,14 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
+/*   By: tboumadj@student.42mulhouse.fr <tboumadj>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 21:32:42 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/11/02 15:41:22 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/11/04 14:44:46 by tboumadj@student ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void	ft_free_all(t_data *data)
+{
+	int	i;
+
+	i = -1;
+	while (i < data->nb_p)
+		pthread_mutex_destroy(&(data->forks[++i]));
+	pthread_mutex_destroy(&(data->eating));
+	pthread_mutex_destroy(&(data->printing));
+	free(data->philo);
+	data->philo = NULL;
+	free(data->forks);
+}
+
+void	sleeping_time(unsigned long long ms)
+{
+	unsigned long long	now;
+
+	now = get_time();
+	while (ms > (get_time() - now))
+		usleep(50);
+	return ;
+}
+
+void	print_road(t_philo *p, char *str)
+{
+	pthread_mutex_lock(&p->dat->printing);
+	printf("%llu philo : %d %s\n", get_time() - p->dat->time_start, p->n, str);
+	pthread_mutex_unlock(&p->dat->printing);
+	return ;
+}
 
 unsigned long long get_time(void)
 {
