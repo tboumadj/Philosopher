@@ -6,24 +6,55 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 21:32:42 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/11/04 18:41:17 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/11/05 18:47:50 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+
+void	ft_dead(t_data *data)
+{
+	int i;
+	
+	i = 0;
+	while (i < data->nb_p)
+	{
+		pthread_mutex_unlock(&(data->philo[i].dat->forks[data->philo[i].l_fork]));
+		pthread_mutex_unlock(&(data->philo[i].dat->forks[data->philo[i].r_fork]));
+		i++;
+	}
+	return ;
+}
+
 void	ft_free_all(t_data *data)
 {
 	int	i;
 
-	i = -1;
+	/*i = 0;
 	while (i < data->nb_p)
-		pthread_mutex_destroy(&data->forks[++i]);
-	pthread_mutex_destroy(&data->eating);
-	pthread_mutex_destroy(&data->printing);
+	{
+		pthread_join(data->philo[i++].thread, NULL);
+	}*/
+	i = 0;
+	while (i < data->nb_p)
+	{
+		pthread_mutex_unlock(&(data->philo[i].dat->forks[data->philo[i].l_fork]));
+		pthread_mutex_unlock(&(data->philo[i].dat->forks[data->philo[i].r_fork]));
+		i++;
+	}
+	i = 0;
+	while (i < data->nb_p)
+	{
+		pthread_mutex_destroy(&(data->forks[i]));
+		i++;
+	}
+	free(data->forks);
+	//pthread_mutex_destroy(&data->eating);
+	pthread_mutex_unlock(&(data->printing));
+	pthread_mutex_destroy(&(data->printing));
 	free(data->philo);
 	data->philo = NULL;
-	free(data->forks);
 }
 
 void	sleeping_time(unsigned long long ms)
@@ -32,7 +63,7 @@ void	sleeping_time(unsigned long long ms)
 
 	now = get_time();
 	while (ms > (get_time() - now))
-		usleep(77);         //----------TEST || 50
+		usleep(77);//----------TEST || 50
 	return ;
 }
 
@@ -44,9 +75,9 @@ void	print_road(t_philo *p, char *str)
 	return ;
 }
 
-unsigned long long get_time(void)
+unsigned long long  get_time(void)
 {
-    struct timeval tv;
+    struct timeval  tv;
     unsigned long long ms;
 
     gettimeofday(&tv, NULL);
@@ -64,14 +95,14 @@ int ft_atoi(const char *str)
     i++;
     if (str[i] == 45)
     {
-        neg *= -1;
-        i++;
+		neg *= -1;
+		i++;
     }
     while (str[i] != '\0' && str[i] >= 48 && str[i] <= 57)
     {
-        nb *= 10;
-        nb += str[i] - 48;
-        i++;
+		nb *= 10;
+		nb += str[i] - 48;
+		i++;
     }
     return (nb * neg);
 }

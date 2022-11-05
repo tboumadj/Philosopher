@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tboumadj@student.42mulhouse.fr <tboumadj>  +#+  +:+       +#+        */
+/*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 20:53:40 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/10/30 12:48:57 by tboumadj@student ###   ########.fr       */
+/*   Updated: 2022/11/04 18:53:13 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_error_nrm(char *str)
 	int	count;
 
 	count = 0;
-	while(str[count])
+	while (str[count])
 		count++;
 	write(2, "Philo : Error : ", 17);
 	write(2, str, count);

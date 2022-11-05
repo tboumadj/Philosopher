@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tboumadj@student.42mulhouse.fr <tboumadj>  +#+  +:+       +#+         #
+#    By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/29 20:55:08 by tboumadj@student  #+#    #+#              #
-#    Updated: 2022/11/02 23:55:55 by tboumadj@student ###   ########.fr        #
+#    Updated: 2022/11/05 17:28:55 by tboumadj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME 	=	philo
 CC		=	gcc
 FLAGS	=	-Wall -Wextra -Werror -g
 RM		=	rm -f
-CHECK	=	-fsanitize=address
+CHECK	=	-fsanitize=thread
 
 #PATH
 HEADER	=	philo.h
@@ -39,7 +39,7 @@ _GREEN  =   $'\x1b[32m
 
 $(NAME): $(OBJS)
 		@echo "$(_RED)Compilation de Pipex en cours...$(_END)"
-		$(CC) $(FLAGS) $(OBJS) -o $(NAME) $(CHECK)
+		$(CC) $(OBJS) $(FLAGS) -lpthread -o $(NAME) $(CHECK)
 		@echo "$(_GREEN)$(_BOLD)Fin de la compilation!$(_END)"
 
 .SILENT : $(OBJS) $(NAME)

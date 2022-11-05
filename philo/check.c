@@ -6,7 +6,7 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 12:50:53 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/11/04 18:47:03 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/11/05 18:25:42 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,17 @@ int	verif_init(t_data *data)
 	if (data->time_ts < 1)
 		return (0);
 	if (data->ac > 5)
-		{
-			if (data->count_opt < 1)
-				return (0);
-		}
+	{
+		if (data->count_opt < 1)
+			return (0);
+	}
 	return (1);
 }
 
 int	check_value(char **argv)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = 1;
 	j = 0;
@@ -56,19 +56,23 @@ int	check_value(char **argv)
 
 void	check_df(t_data *data)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
-	i = -1;
-	while (++i < data->nb_p && data->p_dead == 0)
+	i = 0;
+	while ((i < data->nb_p) && data->p_dead == 0)
 	{
-		pthread_mutex_lock(&data->eating);
-		if(get_time() - data->philo[i].done_e > data->time_td)
+		//pthread_mutex_lock(&data->eating);
+		if ((get_time() - data->philo[i].done_e) > data->time_td)
 		{
 			data->p_dead = 1;
-			print_road(data->philo, "is dead");
+			pthread_mutex_lock(&data->printing);
+			//print_road(data->philo, "is dead");
+			printf("%llu philo : %d is dead\n", get_time() - data->time_start, data->philo[i].n);
+			break ;
 		}
-		pthread_mutex_unlock(&data->eating);
+		//pthread_mutex_unlock(&data->eating);
+		i++;
 	}
 	i = 0;
 	j = 0;
@@ -85,7 +89,7 @@ void	check_df(t_data *data)
 	}
 }
 
-int		check_finish(t_data *data)
+int	check_finish(t_data *data)
 {
 	check_df(data);
 	if (data->p_dead == 1)
