@@ -6,16 +6,16 @@
 #    By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/29 20:55:08 by tboumadj@student  #+#    #+#              #
-#    Updated: 2022/11/05 17:28:55 by tboumadj         ###   ########.fr        #
+#    Updated: 2022/11/06 18:37:00 by tboumadj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #FLAG
 NAME 	=	philo
 CC		=	gcc
-FLAGS	=	-Wall -Wextra -Werror -g
+FLAGS	=	-Wall -Wextra -Werror
 RM		=	rm -f
-CHECK	=	-fsanitize=thread
+CHECK	=	-fsanitize=address
 
 #PATH
 HEADER	=	philo.h

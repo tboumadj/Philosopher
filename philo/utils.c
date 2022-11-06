@@ -6,7 +6,7 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 21:32:42 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/11/05 18:47:50 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/11/06 18:40:46 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,27 +34,39 @@ void	ft_free_all(t_data *data)
 	/*i = 0;
 	while (i < data->nb_p)
 	{
-		pthread_join(data->philo[i++].thread, NULL);
+		pthread_mutex_unlock(&(data->philo[i].dat->forks[data->philo[i].l_fork]));
+		pthread_mutex_unlock(&(data->philo[i].dat->forks[data->philo[i].r_fork]));
+		if (pthread_mutex_unlock(&(data->philo[i].dat->printing)) == 0)
+			pthread_mutex_destroy(&(data->philo[i].dat->printing));
+		pthread_mutex_destroy(&(data->philo[i].dat->forks[data->philo[i].l_fork]));
+		pthread_mutex_destroy(&(data->philo[i].dat->forks[data->philo[i].r_fork]));
+		i++;
 	}*/
 	i = 0;
 	while (i < data->nb_p)
 	{
-		pthread_mutex_unlock(&(data->philo[i].dat->forks[data->philo[i].l_fork]));
-		pthread_mutex_unlock(&(data->philo[i].dat->forks[data->philo[i].r_fork]));
-		i++;
+		pthread_detach(data->philo[i++].thread);
 	}
-	i = 0;
+	/*i = 0;
 	while (i < data->nb_p)
 	{
-		pthread_mutex_destroy(&(data->forks[i]));
+		free(&data->forks[i]);
 		i++;
 	}
 	free(data->forks);
 	//pthread_mutex_destroy(&data->eating);
-	pthread_mutex_unlock(&(data->printing));
-	pthread_mutex_destroy(&(data->printing));
+	//pthread_mutex_unlock(&(data->printing));
+	//pthread_mutex_destroy(&(data->printing));
+	//usleep(77);
+	i = 0;
+	while (i < data->nb_p)
+	{
+		free(&data->philo[i]);
+		i++;
+	}*/
 	free(data->philo);
 	data->philo = NULL;
+	free(data);
 }
 
 void	sleeping_time(unsigned long long ms)
@@ -63,12 +75,14 @@ void	sleeping_time(unsigned long long ms)
 
 	now = get_time();
 	while (ms > (get_time() - now))
-		usleep(77);//----------TEST || 50
+		usleep(90);//----------TEST || 50
 	return ;
 }
 
 void	print_road(t_philo *p, char *str)
 {
+	//if (p->dat->p_dead == 1 || p->dat->full_opt == 1)
+	//	return ;
 	pthread_mutex_lock(&(p->dat->printing));
 	printf("%llu philo : %d %s\n", get_time() - p->dat->time_start, p->n, str);
 	pthread_mutex_unlock(&(p->dat->printing));

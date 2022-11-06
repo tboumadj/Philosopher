@@ -6,7 +6,7 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 12:50:53 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/11/05 18:25:42 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/11/06 18:38:10 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	check_df(t_data *data)
 			pthread_mutex_lock(&data->printing);
 			//print_road(data->philo, "is dead");
 			printf("%llu philo : %d is dead\n", get_time() - data->time_start, data->philo[i].n);
-			break ;
+			return ;
 		}
 		//pthread_mutex_unlock(&data->eating);
 		i++;
@@ -87,6 +87,7 @@ void	check_df(t_data *data)
 		if (j == data->nb_p)
 			data->full_opt = 1;
 	}
+	return ;
 }
 
 int	check_finish(t_data *data)

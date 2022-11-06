@@ -6,7 +6,7 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 15:13:19 by tboumadj          #+#    #+#             */
-/*   Updated: 2022/11/05 18:47:40 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/11/06 17:22:38 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,12 @@ int	init_philo(t_data *data)
 		//usleep(7777);
 		i++;
 	}
-	i = 0;
+	/*i = 0;
 	while (i < data->nb_p)
 	{
 		pthread_detach(data->philo[i].thread);
 		i++;
-	}
+	}*/
 	return (1);
 }
 
