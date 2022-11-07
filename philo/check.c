@@ -6,7 +6,7 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 12:50:53 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/11/06 18:38:10 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/11/07 18:14:39 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,89 +62,49 @@ void	check_df(t_data *data)
 	i = 0;
 	while ((i < data->nb_p) && data->p_dead == 0)
 	{
-		//pthread_mutex_lock(&data->eating);
 		if ((get_time() - data->philo[i].done_e) > data->time_td)
 		{
 			data->p_dead = 1;
 			pthread_mutex_lock(&data->printing);
-			//print_road(data->philo, "is dead");
-			printf("%llu philo : %d is dead\n", get_time() - data->time_start, data->philo[i].n);
+			printf("%llu philo : %d is dead\n",
+				get_time() - data->time_start, data->philo[i].n);
 			return ;
 		}
-		//pthread_mutex_unlock(&data->eating);
 		i++;
 	}
 	i = 0;
 	j = 0;
 	if (data->count_opt > 0)
-	{
-		while (i < data->nb_p)
-		{
-			if (data->philo[i].count_e >= data->count_opt)
-				j++;
-			i++;
-		}
-		if (j == data->nb_p)
-			data->full_opt = 1;
-	}
-	return ;
+		check_eat(data);
+	usleep(777);
 }
 
-int	check_finish(t_data *data)
+void	check_eat(t_data *data)
 {
-	check_df(data);
-	if (data->p_dead == 1)
-		return (1);
-	if (data->count_opt > 0)
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (i < data->nb_p)
 	{
-		if (data->full_opt == 1)
-			return (1);
+		if (data->philo[i].count_e >= data->count_opt)
+			j++;
+		i++;
 	}
-	return (0);
+	if (j == data->nb_p)
+		data->full_opt = 1;
 }
 
-/*int	count_arg(char *str)
+void	ft_error_nrm(char *str)
 {
-	int i;
 	int	count;
 
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] <= 32 && str[i +1] > 32)
-			count++;
-		i++;
-	}
-	return (count);
+	count = 0;
+	while (str[count])
+		count++;
+	write(2, "Philo : Error : ", 17);
+	write(2, str, count);
+	write(2, "\n", 1);
+	return ;
 }
-
-int	check_nb(char *str)
-{
-	int i;
-
-	i = 0;
-	while (str[i])
-	{
-		while (str[i] <= 32)
-			i++;
-		if (str[i] < 48 || str[i] > 57)
-			return(0);
-		i++;
-	}
-	return (1);
-}
-
-int	check_onearg(t_philo *philo, char *argv)
-{
-	int i;
-
-	i = 0;
-	if (check_nb(argv) == 0)
-		return (0);
-	philo->data.cnt_arg = count_arg(argv);
-	printf("%d\n", philo->data.cnt_arg);
-	if (philo->data.cnt_arg != 5 || philo->data.cnt_arg != 6)
-		return(0);
-	
-	
-}*/

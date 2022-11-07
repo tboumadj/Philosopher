@@ -6,7 +6,7 @@
 #    By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/29 20:55:08 by tboumadj@student  #+#    #+#              #
-#    Updated: 2022/11/06 18:37:00 by tboumadj         ###   ########.fr        #
+#    Updated: 2022/11/07 18:04:08 by tboumadj         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,6 @@ CHECK	=	-fsanitize=address
 HEADER	=	philo.h
 
 SRCS	=	main.c \
-		error.c \
 		utils.c \
 		check.c \
 		init.c \
