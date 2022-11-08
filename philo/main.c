@@ -6,7 +6,7 @@
 /*   By: tboumadj <tboumadj@student.42mulhouse.fr>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 20:38:23 by tboumadj@student  #+#    #+#             */
-/*   Updated: 2022/11/07 18:15:52 by tboumadj         ###   ########.fr       */
+/*   Updated: 2022/11/08 16:02:56 by tboumadj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	main(int argc, char **argv)
 		{
 			if (init_value(&data, argv, argc) == 0)
 				ft_error_nrm("WRONG ARG!");
-			if (init_mutex(&data) == 1)
+			else if (init_mutex(&data) == 1)
 			{
 				init_philo(&data);
 				while (1)
